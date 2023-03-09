@@ -1,0 +1,21 @@
+
+===================节点编译=====================================
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release 
+
+====================数据回放====================================
+. install/setup.bash;ros2 bag play /home/xfy/Data/zhijiang_data/huanbaoyuan/huanbaoyuan/huanbaoyuan.db3 -l
+
+====================地面分割====================================
+. install/setup.bash;ros2 run robosense getPtCloud
+
+=====================可通行区域=================================
+. install/setup.bash;ros2 run drivablearea drivable_area_node
+
+=====================2D障碍物===================================
+. install/setup.bash;ros2 run obstacle2D obstacle2d
+
+=====================感知结果发送================================
+. install/setup.bash;ros2 run perceptionfusion perception_fusion_node
+
+=======================RVIZ可视化显示============================
+  rviz2 -d rviz_ros2.rviz
